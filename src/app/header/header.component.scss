@@ -1,0 +1,11 @@
+.hm-logo{
+  float: right;
+}
+.customer-logo{
+  float: left;
+}
+@media screen and (max-width: 600px) and (min-width: 350px){
+  .customer-logo-head, .hm-logo-head{
+    max-width: 50%;
+  }
+}

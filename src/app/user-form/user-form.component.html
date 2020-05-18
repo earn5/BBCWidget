@@ -1,0 +1,109 @@
+<form [formGroup]="userForm">
+  <div class="container-fluid">
+      <div class="row body-background">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 credit-txt-head">
+              <h4 class="credit-headTxt">Your FREE credit report is just a click away!</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="hidden-xs hidden-sm col-md-1 col-lg-3">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-6 form-head">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 txt-head">
+                  <p class="form-txt">Please fill your details below</p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-name">
+                  <p class="rmv-mrgnBtm">Full Name: <span class="required-astric-mark">*</span></p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 first-name-head">
+                  <input type="text" name="firstName" value="" class="form-control" placeholder="First Name" formControlName="firstName"
+                  [ngClass]="{ 'is-invalid': (submitted || usrGroup.firstName.dirty || usrGroup.firstName.touched) && usrGroup.firstName.invalid }">
+                    <div *ngIf="submitted ||usrGroup.firstName.invalid && (usrGroup.firstName.dirty || usrGroup.firstName.touched)"
+                        class="invalid-feedback text-left">
+                        <div *ngIf="usrGroup.firstName.errors?.required ">Invalid characters found in Name</div>
+                        <div *ngIf="usrGroup.firstName.errors?.maxlength">Invalid characters found in Name</div>
+                        <div *ngIf="usrGroup.firstName.errors?.pattern">Invalid characters found in Name</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <input type="text" name="lastName" value="" class="form-control" placeholder="Last Name" formControlName="lastName">
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mob-num">
+                  <p class="rmv-mrgnBtm">Mobile Number: <span class="required-astric-mark">*</span></p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <input type="number" name="mobileNumber" value="" class="form-control" placeholder="Mobile Number" formControlName="mobileNumber">
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 email-id">
+                  <p class="rmv-mrgnBtm">Email Address: <span class="required-astric-mark">*</span></p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
+                  <input type="email" name="emailAdd" value="" class="form-control" placeholder="ex: myname@example.com" formControlName="emailAdd">
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 annual-income">
+                  <p class="rmv-mrgnBtm">Annual Income(INR):</p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <input type="text" name="annualIncome" value="" class="form-control" formControlName="annualIncome">
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 orgnization">
+                  <p class="rmv-mrgnBtm">Orgnization:</p>
+                </div>
+              </div>
+              <div class="row align-bottom">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  <input type="text" name="organization" value="" class="form-control" formControlName="organization">
+                </div>
+              </div>
+              <div class="row otp">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 otp-btn-head">
+                  <!-- <button type="button" name="button" class="otp-btn">Get OTP</button> -->
+                  <button type="button" name="button" class="otp-btn" (click)="verifyOtp()">Verify OTP</button>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 otp-textbox-head">
+                  <input type="text" name="otpVerify" value="" class="form-control" formControlName="otpVerify">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                  <a class="resend-otp">Resend OTP</a>
+                </div>
+              </div>
+              <div class="row legal-consent">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 legal-consent-txt">
+                  <input type="checkbox" name="legalClause" value="" formControlName="legalClause">
+                  I hereby consent to appoint <span style="Color: red;">CUSTOMER NAME</span>. as my authorized representative to receive my Credit Information Report (with Score) from CRIF High Mark Credit Information Services Private Limited for the purpose of __________________________. I confirm that I have read the CRIF High Mark Credit Score Terms of Use and I hereby accept and agree to them. I also acknowledge that I shall not raise any claim or hold liable CRIF High Mark in relation to my Credit Information Report and Credit Score provided or to be provided by CRIF High Mark to <span style="Color: red;">CUSTOMER NAME</span>.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 credit-reportBtn-head">
+                  <button type="button" name="button" class="credit-report-btn" (click)="getCreditReport()">Get Credit Report</button>
+                </div>
+              </div>
+            </div>
+            <div class="hidden-xs hidden-sm col-md-1 col-lg-3">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>
